@@ -1,0 +1,2 @@
+# go-zero-rpctest
+test
