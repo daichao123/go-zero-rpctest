@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"go-zero-rpctest/user/pb"
+	"strconv"
 
 	"go-zero-rpctest/user-api/internal/svc"
 	"go-zero-rpctest/user-api/internal/types"
@@ -24,7 +26,16 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserInfo
 }
 
 func (l *UserInfoLogic) UserInfo(req *types.UserInfoReq) (resp *types.UserInfoResp, err error) {
-	// todo: add your logic here and delete this line
+	userResp, err := l.svcCtx.UserRpcClient.GetUser(l.ctx, &pb.IdRequest{
+		Id: strconv.Itoa(int(req.UserId)),
+	})
+	if err != nil {
+		logx.Error(err)
+	}
+	userRespId, _ := strconv.Atoi(userResp.Id)
+	return &types.UserInfoResp{
+		UserId:   int64(userRespId),
+		Username: userResp.Name,
+	}, nil
 
-	return
 }
