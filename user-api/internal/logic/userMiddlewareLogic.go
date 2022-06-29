@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"fmt"
 
 	"go-zero-rpctest/user-api/internal/svc"
 	"go-zero-rpctest/user-api/internal/types"
@@ -24,7 +25,7 @@ func NewUserMiddlewareLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Us
 }
 
 func (l *UserMiddlewareLogic) UserMiddleware(req *types.UserInfoReq) (resp *types.UserInfoResp, err error) {
-	// todo: add your logic here and delete this line
+	fmt.Println("middleware begin in ...")
 
 	return
 }

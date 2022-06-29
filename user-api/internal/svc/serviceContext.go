@@ -25,6 +25,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		UserModel:       model.NewUsersModel(sqlx.NewMysql(c.MysqlDb.DataSource)),
 		UserLevelsModel: model.NewUserLevelsModel(sqlx.NewMysql(c.MysqlDb.DataSource)),
 		//使用user-api作为客户端 调用user-rpc 服务
-		UserRpcClient: user.NewUser(zrpc.MustNewClient(c.UserRpcConf)),
+		UserRpcClient: user.NewUser(zrpc.MustNewClient(c.RpcClientConf)),
 	}
 }
