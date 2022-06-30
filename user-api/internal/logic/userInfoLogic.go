@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"go-zero-rpctest/user/pb"
+	walletPb "go-zero-rpctest/wallet/pb"
 	"strconv"
 
 	"go-zero-rpctest/user-api/internal/svc"
@@ -26,16 +26,24 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserInfo
 }
 
 func (l *UserInfoLogic) UserInfo(req *types.UserInfoReq) (resp *types.UserInfoResp, err error) {
-	userResp, err := l.svcCtx.UserRpcClient.GetUser(l.ctx, &pb.IdRequest{
-		Id: strconv.Itoa(int(req.UserId)),
+	info, err := l.svcCtx.WalletRpcClient.GetCoinInfo(l.ctx, &walletPb.CoinIdRequest{
+		CoinId: "123",
 	})
-	if err != nil {
-		logx.Error(err)
-	}
-	userRespId, _ := strconv.Atoi(userResp.Id)
+	atoi, _ := strconv.Atoi(info.CoinId)
 	return &types.UserInfoResp{
-		UserId:   int64(userRespId),
-		Username: userResp.Name,
+		UserId:   int64(atoi),
+		Username: info.CoinName,
 	}, nil
+	//userResp, err := l.svcCtx.UserRpcClient.GetUser(l.ctx, &pb.IdRequest{
+	//	Id: strconv.Itoa(int(req.UserId)),
+	//})
+	//if err != nil {
+	//	logx.Error(err)
+	//}
+	//userRespId, _ := strconv.Atoi(userResp.Id)
+	//return &types.UserInfoResp{
+	//	UserId:   int64(userRespId),
+	//	Username: userResp.Name,
+	//}, nil
 
 }

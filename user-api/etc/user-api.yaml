@@ -8,6 +8,12 @@ UserRpcConf:
       - 127.0.0.1:2379
     Key: user.rpc
 
+WalletRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: wallet.rpc
+
 MysqlDb:
   DataSource: root:root@tcp(127.0.0.1:3306)/user_service?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 

@@ -1,0 +1,10 @@
+Name: wallet.rpc
+ListenOn: 127.0.0.1:8899
+Mode: dev
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: wallet.rpc
+
+MysqlDb:
+  DataSource: root:root@tcp(127.0.0.1:3306)/wallet_service?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai

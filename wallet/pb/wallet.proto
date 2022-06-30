@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb";
+
+
+message CoinIdRequest {
+  string coinId = 1;
+}
+
+message WalletResponse {
+  // 用户id
+  string coinId = 1;
+  // 用户名称
+  string coinName = 2;
+  // 用户性别
+  string price = 3;
+}
+
+service Wallet {
+  rpc getCoinInfo(CoinIdRequest) returns(WalletResponse);
+}

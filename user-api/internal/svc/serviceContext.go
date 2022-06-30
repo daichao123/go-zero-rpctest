@@ -8,6 +8,7 @@ import (
 	"go-zero-rpctest/user-api/internal/middleware"
 	"go-zero-rpctest/user-api/model"
 	"go-zero-rpctest/user/user"
+	"go-zero-rpctest/wallet/wallet"
 )
 
 type ServiceContext struct {
@@ -16,6 +17,7 @@ type ServiceContext struct {
 	UserModel       model.UsersModel
 	UserLevelsModel model.UserLevelsModel
 	UserRpcClient   user.User
+	WalletRpcClient wallet.Wallet
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -25,6 +27,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		UserModel:       model.NewUsersModel(sqlx.NewMysql(c.MysqlDb.DataSource)),
 		UserLevelsModel: model.NewUserLevelsModel(sqlx.NewMysql(c.MysqlDb.DataSource)),
 		//使用user-api作为客户端 调用user-rpc 服务
-		UserRpcClient: user.NewUser(zrpc.MustNewClient(c.RpcClientConf)),
+		UserRpcClient:   user.NewUser(zrpc.MustNewClient(c.UserRpcConf)),
+		WalletRpcClient: wallet.NewWallet(zrpc.MustNewClient(c.WalletRpcConf)),
 	}
 }
