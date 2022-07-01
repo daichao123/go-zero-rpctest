@@ -11,3 +11,4 @@
 {"@timestamp":"2022-07-01T15:27:26.343+08:00","caller":"handler/loghandler.go:197","content":"[HTTP] 200 - POST /register - 127.0.0.1:65035 - PostmanRuntime/7.28.4","duration":"0.5ms","level":"info","span":"3235476682e67cc7","trace":"13c336aff6949e55a7a06b43f5b497f9"}
 {"@timestamp":"2022-07-01T15:34:57.544+08:00","caller":"handler/loghandler.go:197","content":"[HTTP] 200 - POST /register - 127.0.0.1:49398 - PostmanRuntime/7.28.4","duration":"0.0ms","level":"info","span":"18a96cc22b8bf0ce","trace":"2501bb5216d2f3e9506182a82acfd928"}
 111
+2222
