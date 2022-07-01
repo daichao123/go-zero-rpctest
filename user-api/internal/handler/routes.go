@@ -19,8 +19,8 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/levelup",
-				Handler: levelUpHandler(serverCtx),
+				Path:    "/register",
+				Handler: registerHandler(serverCtx),
 			},
 		},
 	)

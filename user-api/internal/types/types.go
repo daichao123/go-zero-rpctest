@@ -3,12 +3,19 @@ package types
 
 type User struct {
 	Id       int64  `json:"id"`
+	Mobile   string `json:"mobile"`
 	Nickname string `json:"nickname"`
+	Sex      int64  `json:"sex"`
+	Avatar   string `json:"avatar"`
 }
 
 type RegisterReq struct {
-	Mobile   string `json:"mobile"`
-	Password string `json:"password"`
+	Mobile         string `json:"mobile"`
+	Password       string `json:"password" validate:"required"`
+	RepeatPassword string `json:"repeatPassword" validate:"required"`
+	Email          string `json:"email"`
+	AuthCode       string `json:"authCode" validate:"required"`
+	Area           string `json:"area"`
 }
 
 type RegisterResp struct {
@@ -18,31 +25,8 @@ type RegisterResp struct {
 }
 
 type UserInfoReq struct {
-	UserId int64 `json:"userId"`
 }
 
 type UserInfoResp struct {
-	UserId   int64  `json:"userId"`
-	Username string `json:"username"`
-}
-
-type LoginReq struct {
-	Mobile   string `json:"mobile"`
-	Password string `json:"password"`
-}
-
-type LoginResp struct {
-	AccessToken  string `json:"accessToken"`
-	AccessExpire int64  `json:"accessExpire"`
-	RefreshAfter int64  `json:"refreshAfter"`
-}
-
-type UserLevelUpReq struct {
-	UserId int64 `json:"userId"`
-	Level  int64 `json:"level"`
-}
-
-type UserLevelUpResp struct {
-	Code    int64  `json:"code"`
-	Message string `json:"message"`
+	UserInfo User `json:"userInfo"`
 }

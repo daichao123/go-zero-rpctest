@@ -1,0 +1,41 @@
+syntax = "v1"
+
+info(
+    title: "用户中心定义请求响应体"
+    desc: "request Type 和 response Type"
+    author: "dc"
+    email: "1078638034@qq.com"
+    version: "v1"
+)
+
+type User{
+    Id       int64  `json:"id"`
+    Mobile   string `json:"mobile"`
+    Nickname string `json:"nickname"`
+    Sex      int64  `json:"sex"`
+    Avatar   string `json:"avatar"`
+}
+
+type(
+    RegisterReq {
+        Mobile          string `json:"mobile"`
+        Password        string `json:"password" validate:"required"`
+        RepeatPassword  string `json:"repeatPassword" validate:"required"`
+        Email           string `json:"email"`
+        AuthCode        string `json:"authCode" validate:"required"`
+        Area            string `json:"area"`
+    }
+    RegisterResp {
+        AccessToken  string `json:"accessToken"`
+        AccessExpire int64  `json:"accessExpire"`
+        RefreshAfter int64  `json:"refreshAfter"`
+    }
+)
+
+type (
+	UserInfoReq {
+	}
+	UserInfoResp {
+		UserInfo User `json:"userInfo"`
+	}
+)

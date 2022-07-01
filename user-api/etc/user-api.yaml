@@ -21,6 +21,6 @@ Log:
   ServiceName: user-api
   Mode: file
   Path: logs
-  Encoding: plain
-  Level: severe
+  Encoding: json
+  Level: info
   KeepDays: 7
