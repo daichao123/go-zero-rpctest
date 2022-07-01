@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/go-playground/validator/v10"
+	"github.com/zeromicro/go-zero/core/logx"
 	"go-zero-rpctest/user-api/common/result"
 	"go-zero-rpctest/user-api/common/xerr"
 	"net/http"
@@ -21,6 +22,7 @@ func registerHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 		if err := validator.New().StructCtx(r.Context(), req); err != nil {
+			logx.Info(err)
 			httpx.WriteJson(w, http.StatusOK, result.Error(xerr.REUQEST_PARAM_ERROR, "请输入正确的参数"))
 			return
 		}

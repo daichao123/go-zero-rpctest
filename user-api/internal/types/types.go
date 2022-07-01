@@ -12,7 +12,7 @@ type User struct {
 type RegisterReq struct {
 	Mobile         string `json:"mobile"`
 	Password       string `json:"password" validate:"required"`
-	RepeatPassword string `json:"repeatPassword" validate:"required"`
+	RepeatPassword string `json:"repeatPassword" validate:"required,eqfield=Password"`
 	Email          string `json:"email"`
 	AuthCode       string `json:"authCode" validate:"required"`
 	Area           string `json:"area"`
